@@ -1,5 +1,6 @@
 package uk.ac.solent.sqllite
 
+import.android.database.Cursor
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
@@ -16,7 +17,7 @@ class MyHelper(ctx: Context) : SQLiteOpenHelper(ctx, "MusicDB", null, 1){
         onCreate(db)
     }
 
-    fun addSong(title:String, artist:String, year:Long){
+    fun addSong(title:String, artist:String, year:Long) : Long{
 
         val db = writableDatabase
         val stmt = db.compileStatement ("INSERT INTO Hits(Title, Artist, Year) VALUES (?,?,?)");
@@ -25,5 +26,17 @@ class MyHelper(ctx: Context) : SQLiteOpenHelper(ctx, "MusicDB", null, 1){
         stmt.bindString(3, year)
         val id = stmt.executeInsert()
         return id
+    }
+
+    fun searchSong(id: Long) : List<Songs> {
+        val id = idEditText.text.toString()
+        val songs = mutableListOf<Songs>()
+        val db = readableDatabase
+        val cursor = db.rawQuery ("SELECT * FROM Hits WHERE Id=?", arrayOf<String>(id ) )
+        if (cursor.moveToFirst()){
+
+            
+        }
+
     }
 }
