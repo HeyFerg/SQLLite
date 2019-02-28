@@ -1,9 +1,12 @@
 package uk.ac.solent.sqllite
 
-import.android.database.Cursor
+import android.database.Cursor
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+
+
+data class Song(val id: String, val t: String, val a: String, val y: Long)
 
 class MyHelper(ctx: Context) : SQLiteOpenHelper(ctx, "MusicDB", null, 1){
 
@@ -23,20 +26,26 @@ class MyHelper(ctx: Context) : SQLiteOpenHelper(ctx, "MusicDB", null, 1){
         val stmt = db.compileStatement ("INSERT INTO Hits(Title, Artist, Year) VALUES (?,?,?)");
         stmt.bindString(1, title)
         stmt.bindString(2, artist)
-        stmt.bindString(3, year)
+        stmt.bindLong(3, year)
         val id = stmt.executeInsert()
         return id
     }
 
-    fun searchSong(id: Long) : List<Songs> {
-        val id = idEditText.text.toString()
-        val songs = mutableListOf<Songs>()
+
+    fun searchOneSong(id: String) : Song? {
+
         val db = readableDatabase
-        val cursor = db.rawQuery ("SELECT * FROM Hits WHERE Id=?", arrayOf<String>(id ) )
-        if (cursor.moveToFirst()){
+        val cursor = db.rawQuery ("SELECT * FROM Hits WHERE ID=?", arrayOf<String>("$id"))
 
-            
+        if(cursor.moveToFirst()){
+
+            val s = Song(cursor.getString(cursor.getColumnIndex("ID:")),
+            cursor.getString(cursor.getColumnIndex("Artist:")), cursor.getString(cursor.getColumnIndex("Title:")),
+            cursor.getLong(cursor.getColumnIndex("Year:")))
+            cursor.close()
+            return s
         }
-
+        cursor.close()
+        return null
     }
 }
