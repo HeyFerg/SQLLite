@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <Button
@@ -11,71 +12,58 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Delete"
-        tools:layout_editor_absoluteX="248dp"
-        tools:layout_editor_absoluteY="339dp" />
+   />
 
     <Button
         android:id="@+id/updateBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Update"
-        tools:layout_editor_absoluteX="248dp"
-        tools:layout_editor_absoluteY="253dp" />
+    />
 
     <Button
         android:id="@+id/searchBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Search"
-        tools:layout_editor_absoluteX="248dp"
-        tools:layout_editor_absoluteY="177dp" />
+     />
 
     <Button
         android:id="@+id/addBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add"
-        tools:layout_editor_absoluteX="248dp"
-        tools:layout_editor_absoluteY="89dp" />
+        android:text="Add" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/etYear"
         android:layout_width="197dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Year:"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="339dp" />
+        android:hint="Year:" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/etArtist"
         android:layout_width="197dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Artist:"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="253dp" />
+        android:text="Artist:" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/etTitle"
         android:layout_width="197dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Title:"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="177dp" />
+        android:text="Title:" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/etID"
         android:layout_width="197dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="ID:"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="89dp" />
+        android:text="ID:" />
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
